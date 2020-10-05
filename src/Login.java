@@ -27,20 +27,20 @@ public class Login extends JFrame implements ActionListener {
 	JPanel menu = new JPanel();
 		JPanel lblBar = new JPanel(new GridLayout(2,1));
 			JPanel lblB = new JPanel(new GridBagLayout());
-				JLabel idLbl = new JLabel("¾ÆÀÌµğ");
+				JLabel idLbl = new JLabel("ì•„ì´ë””");
 			JPanel lblB2 = new JPanel(new GridBagLayout());
-				JLabel pwLbl = new JLabel("ºñ¹Ğ¹øÈ£");
+				JLabel pwLbl = new JLabel("ë¹„ë°€ë²ˆí˜¸");
 		JPanel tfBar = new JPanel(new GridLayout(2,1));
 			JPanel blank1 = new JPanel(new GridBagLayout());
 				JTextField idTf = new JTextField(10);
 			JPanel blank2 = new JPanel(new GridBagLayout());
 				JPasswordField pwTf = new JPasswordField(10);
 		JPanel btnBar = new JPanel(new GridLayout(2,1));
-			JButton loginBtn = new JButton("µé¾î°¡±â");
-			JButton joinBtn = new JButton("ÇÔ²²ÇÏ±â");
+			JButton loginBtn = new JButton("ë“¤ì–´ê°€ê¸°");
+			JButton joinBtn = new JButton("í•¨ê»˜í•˜ê¸°");
 
 	Image img ;
-	Font fnt = new Font("¸¼Àº °íµñ", 1, 12);
+	Font fnt = new Font("ë§‘ì€ ê³ ë”•", 1, 12);
 	
 	String id;
 	ImageIcon icon;
@@ -49,7 +49,7 @@ public class Login extends JFrame implements ActionListener {
 	
 	public Login() {		
 		setLayout(new BorderLayout());
-		setTitle("ÇÔ²² ´Ş¸®±â");
+		setTitle("í•¨ê»˜ ë‹¬ë¦¬ê¸°");
 
 		
 		icon = new ImageIcon(getClass().getClassLoader().getResource("login.gif"));
@@ -88,7 +88,7 @@ public class Login extends JFrame implements ActionListener {
 		menu.add(tfBar);
 		menu.add(btnBar);
 		
-		// È¯°á ¼³Á¤
+		// í™˜ ì„¤ì •
 		set.setPaneStyle(back);		set.setPaneStyle(blank1);	set.setPaneStyle(blank2);
 		set.setPaneStyle(lblB); 		set.setPaneStyle(lblB2);			
 		set.setPaneStyle(btn1);		set.setPaneStyle(btn2);		set.setPaneStyle(btnBar);	set.setPaneStyle(menu);
@@ -116,31 +116,31 @@ public class Login extends JFrame implements ActionListener {
 		Object obj = ae.getSource();
 		
 		if (obj == loginBtn || obj == idTf || obj == pwTf) {
-			// ¾ÆÀÌµğ ºñ¹Ğ¹øÈ£ Á¤ÇÕ¼º Ã¼Å©
+			// ì•„ì´ë”” ë¹„ë°€ë²ˆí˜¸ ì •í•©ì„± ì²´í¬
 			try { 
-				// DAO »ı¼º ÈÄ DB ¿¡¼­ ·Î±×ÀÎ Ã¼Å©
+				// DAO ìƒì„± í›„ DB ì—ì„œ ë¡œê·¸ì¸ ì²´í¬
 				if ( loginCheck())  { 
-					// ·Î±×ÀÎ ¼º°ø
-					// ¸ŞÀÎ È­¸é ¿­±â  >> ·Î±×ÀÎµÈ ¾ÆÀÌµğ Á¤º¸ ³Ñ°ÜÁÖ±â
-					// ·Î±×ÀÎÃ¢ ´İ±â
-					JOptionPane.showMessageDialog(this, "·Î±×ÀÎÇÏ¿´½À´Ï´Ù.");
+					// ë¡œê·¸ì¸ ì„±ê³µ
+					// ë©”ì¸ í™”ë©´ ì—´ê¸°  >> ë¡œê·¸ì¸ëœ ì•„ì´ë”” ì •ë³´ ë„˜ê²¨ì£¼ê¸°
+					// ë¡œê·¸ì¸ì°½ ë‹«ê¸°
+					JOptionPane.showMessageDialog(this, "ë¡œê·¸ì¸í•˜ì˜€ìŠµë‹ˆë‹¤.");
 					dispose();
 					new MainScreen(idTf.getText());
 				} else {
-					JOptionPane.showMessageDialog(this, "¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä");
+					JOptionPane.showMessageDialog(this, "ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”");
 					tfClear();
 				}
 			} catch(NullPointerException ne) {
-				JOptionPane.showMessageDialog(this, "¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+				JOptionPane.showMessageDialog(this, "ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				tfClear();
 			}
 		} else if (obj == joinBtn) { 
-			// È¸¿ø °¡ÀÔ ÀÏ ¶§ È¸¿ø°¡ÀÔÃ¢ ¶ç¿ì±â
+			// íšŒì› ê°€ì… ì¼ ë•Œ íšŒì›ê°€ì…ì°½ ë„ìš°ê¸°
 			new MemberInfo();
 		}
 	}
 	
-	// ·Î±×ÀÎ È®ÀÎ
+	// ë¡œê·¸ì¸ í™•ì¸
 	public boolean loginCheck() {
 		MemberDAO mDAO = MemberDAO.getInstance();
 		List<MemberVO> memberList = mDAO.getAllRecordL();
