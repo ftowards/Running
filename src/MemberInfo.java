@@ -141,9 +141,7 @@ public class MemberInfo extends JFrame implements ActionListener {
 		
 		char[] empty = {} ;
 		if (obj == okBtn) {
-			System.out.println("1");
 			if (checkInfo()) {
-				System.out.println("1");
 				insertNewMember();
 			}			
 		} else if (obj == closeBtn) {
@@ -353,13 +351,12 @@ public class MemberInfo extends JFrame implements ActionListener {
 					if(vo.getTel().equals(getTelIn())) {
 						JOptionPane.showMessageDialog(this, "이미 등록된 연락처 입니다.");
 						return false;				
-					} 
+					}
 				}
-				JOptionPane.showMessageDialog(this, "등록 가능한 연락처 입니다.");
-				setTelConfirm();
-				return true;
 			}
 		}
+		JOptionPane.showMessageDialog(this, "등록 가능한 연락처 입니다.");
+		setTelConfirm();
 		return true;
 	}
 	
@@ -389,12 +386,13 @@ public class MemberInfo extends JFrame implements ActionListener {
 					MemberVO vo = memberList.get(i);
 					if(vo.getTel().equals(getTelIn())) {
 						JOptionPane.showMessageDialog(this, "이미 등록된 연락처 입니다.");
-						return false;				 
+						return false;				
+					} else {
+						JOptionPane.showMessageDialog(this, "등록 가능한 연락처 입니다.");
+						setTelConfirm();
+						return true;
 					}
 				}
-				JOptionPane.showMessageDialog(this, "등록 가능한 연락처 입니다.");
-				setTelConfirm();
-				return true;
 			}
 		}
 		return true;
