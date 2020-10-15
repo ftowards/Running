@@ -269,7 +269,7 @@ public class MeetingDAO extends DBConn{
 			
 			String sql = "select a.meeting_no, to_char(mmdd, 'YYYY-MM-DD'), to_char(hhmm, 'hh24:mi'), location, a.id, nop, code, decode(state, 1, '진행 중', 2,'완료',3,'취소'), count(b.id) " + 
 							  "from (select * from p_meeting " + 
-							  "where hhmm between to_date(?, 'hh24mi') AND TO_DATE(?, 'hh24mi') AND id like ? and state like ?) a " + 
+							  "where to_char(hhmm, 'hh24mi') between ? AND ? AND id like ? and state like ?) a " + 
 							  "join p_entry b on a.meeting_no = b.meeting_no " + 
 							  "group by a.meeting_no, mmdd, hhmm, location, a.id, nop, code, state order By a.meeting_no";
 
@@ -309,7 +309,7 @@ public class MeetingDAO extends DBConn{
 			
 			String sql = "select a.meeting_no, to_char(mmdd, 'YYYY-MM-DD'), to_char(hhmm, 'hh24:mi'), location, a.id, nop, code, decode(state, 1, '진행 중', 2,'완료',3,'취소'), count(b.id) " + 
 							  "from (select * from p_meeting " + 
-							  "where hhmm between to_date(?, 'hh24mi') AND TO_DATE(?, 'hh24mi') AND id like ? and state like ? and meeting_no in (select meeting_no from p_entry where id = ?)) a " + 
+							  "where to_char(hhmm, 'hh24mi') between ? AND ? AND id like ? and state like ? and meeting_no in (select meeting_no from p_entry where id = ?)) a " + 
 							  "join p_entry b on a.meeting_no = b.meeting_no " + 
 							  "group by a.meeting_no, mmdd, hhmm, location, a.id, nop, code, state order By a.meeting_no";
 
